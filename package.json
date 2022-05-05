@@ -10,8 +10,8 @@
   },
   "scripts": {
     "dev": "parcel serve ./src/index.html",
-    "build": "parcel build ./src/index.html --dist-dir build",
-    "deploy": "gh-pages -d dist"
+    "build": "parcel build ./src/index.html --dist-dir build --public-url /desafio-m5",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/node": "^17.0.31"
