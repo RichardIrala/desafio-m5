@@ -1,8 +1,11 @@
 import { state } from "../../state";
-
+//ESTOS SON LOS IMPORT DE PIEDRA PAPEL O TIJERAS
+//pero al hacer yarn build se arruinan. Se genera una dirección bien pero se añade un "/" al final y por ende no funciona. Solo pasa aca. El import del state se traduce bien
+//Con esa logica hice en su momento una archivo ts para las imagenes en el mismo nivel que state.ts y tampoco funcionaba... Pero debe ser problema de la ubicación del componente PPoT
 const piedra = require("url:../imgs/piedra.svg");
 const papel = require("url:../imgs/papel.svg");
 const tijera = require("url:../imgs/tijera.svg");
+
 customElements.define(
   "ppot-el",
   class extends HTMLElement {
@@ -42,9 +45,9 @@ customElements.define(
       const div = document.createElement("div");
       div.classList.add("imgs-container");
       div.innerHTML = `
-      <img class="ppot" src=${piedra}/>
-      <img class="ppot" src=${papel}/>
-      <img class="ppot" src=${tijera}/>
+      <img class="ppot" src=${piedra}>
+      <img class="ppot" src=${papel}>
+      <img class="ppot" src=${tijera}>
       `;
       this.shadow.appendChild(div);
     }

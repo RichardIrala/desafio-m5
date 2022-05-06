@@ -212,10 +212,10 @@ const state = {
     console.log(jugadas, "sSOMOSMOSMOS");
     jugadas.myPlay != ""
       ? (root.innerHTML = `
-      <img class="pc-play-now" src=${pcPlay()}></img>
-      <img class="pc-play-fast" src=${pcPlay()}></img>
-      <img class="player-play-now" src=${playerPlay()}></img>
-      <img class="player-play-fast" src=${playerPlay()}></img>
+      <img class="pc-play-now" src=${pcPlay()}>
+      <img class="pc-play-fast" src=${pcPlay()}>
+      <img class="player-play-now" src=${playerPlay()}>
+      <img class="player-play-fast" src=${playerPlay()}>
       `)
       : (root.innerHTML = `NO JUGASTE BRO`);
     root.appendChild(style);
