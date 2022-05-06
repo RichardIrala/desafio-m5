@@ -47,12 +47,16 @@ export function gamePage() {
       setTimeout(() => {
         //Se remueve el contador
         div.removeChild(divDelSpan);
-        // Este params le envia el goTo al renderGanador para que al clickear VOLVER A JUGAR le recargue la página
-        state.renderGanador();
+        state.renderAnimationCombat();
         state.consola();
       }, 500);
+      setTimeout(() => {
+        state.renderGanador();
+        state.consola();
+      }, 4000);
     }
   }, 1000);
+
   //state.resultado y state.getJugada
 }
 //juego de piedra papel o tijeras

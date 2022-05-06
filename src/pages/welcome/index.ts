@@ -3,7 +3,7 @@ export function pageWelcome(params: any) {
   root.innerHTML = ``;
   const divPadre = document.createElement("div");
   const span = document.createElement("span");
-  span.innerHTML = `HOLA`;
+  span.innerHTML = `TOCAME BB`;
   span.addEventListener("click", () => {
     console.log("a");
     params("/game-homepage");

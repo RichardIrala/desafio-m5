@@ -1,5 +1,7 @@
 import { createHistogram } from "perf_hooks";
-
+const piedra = require("url:./components/imgs/piedra.svg");
+const papel = require("url:./components/imgs/papel.svg");
+const tijera = require("url:./components/imgs/tijera.svg");
 const state = {
   data: {
     notes: { pendientes: [] },
@@ -128,6 +130,95 @@ const state = {
     } else {
       alert("error");
     }
+  },
+  renderAnimationCombat() {
+    const root = document.querySelector(".root");
+    const style = document.createElement("style");
+    style.innerHTML = `
+    .pc-play-now {
+      position: absolute;
+      top: -10vh;
+      left: 50%;
+      transform: rotate(180deg) translate(50%);
+      height: 45vh;
+      animation: pcMove 2s linear;
+    }
+    @keyframes pcMove {
+      100% {
+        top: 0;
+      }
+    }
+    .pc-play-fast {
+      position: absolute;
+      top: -10vh;
+      left: 50%;
+      transform: rotate(180deg) translate(50%);
+      height: 10vh;
+      animation: pcMoveFast 2s linear;
+      z-index: 2;
+    }
+    @keyframes pcMoveFast {
+      100% {
+        top: 100vh;
+      }
+    }
+    .player-play-now {
+      position: absolute;
+      bottom: -10vh;
+      left: 50%;
+      transform: translate(-50%);
+      height: 45vh;
+      animation: playerMove 2s linear;
+    }
+    
+    @keyframes playerMove {
+      100% {
+        bottom: 0;
+      }
+    }
+    .player-play-fast {
+      position: absolute;
+      bottom: -10vh;
+      left: 50%;
+      transform: translate(-50%);
+      height: 10vh;
+      animation: playerMoveFast 2s linear;
+    }
+    @keyframes playerMoveFast {
+      100% {
+        bottom: 100vh;
+      }
+    }
+    `;
+    const jugadas = this.getState().game.play;
+    function pcPlay() {
+      if (jugadas.computerPlay == "piedra") {
+        return piedra;
+      } else if (jugadas.computerPlay == "papel") {
+        return papel;
+      } else {
+        return tijera;
+      }
+    }
+    function playerPlay() {
+      if (jugadas.myPlay == "piedra") {
+        return piedra;
+      } else if (jugadas.myPlay == "papel") {
+        return papel;
+      } else {
+        return tijera;
+      }
+    }
+    console.log(jugadas, "sSOMOSMOSMOS");
+    jugadas.myPlay != ""
+      ? (root.innerHTML = `
+      <img class="pc-play-now" src=${pcPlay()}></img>
+      <img class="pc-play-fast" src=${pcPlay()}></img>
+      <img class="player-play-now" src=${playerPlay()}></img>
+      <img class="player-play-fast" src=${playerPlay()}></img>
+      `)
+      : (root.innerHTML = `NO JUGASTE BRO`);
+    root.appendChild(style);
   },
   renderGanador() {
     // for (const cb of this.listener) {
