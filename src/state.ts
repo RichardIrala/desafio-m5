@@ -9,8 +9,8 @@ const state = {
         computerPlay: "",
       },
       gamesStatus: {
-        victorys: "",
-        losses: "",
+        victorys: 0,
+        losses: 0,
       },
       listeners: [],
     },
@@ -79,11 +79,11 @@ const state = {
   //A partir de aca estan todos los comandos del state para el juego
   resetJugadas() {
     // console.log("DHSAJDGHSAJ");
-    // const cs = this.getState();
-    // cs.game.myPlay = "";
-    // cs.game.computerPlay = "";
-    // console.log(cs);
-    // this.setState(cs);
+    const cs = this.getState();
+    cs.game.play.myPlay = "";
+    cs.game.play.computerPlay = "";
+    console.log(cs);
+    this.setState(cs);
   },
   setJugada(jugada: number) {
     const cs = this.getState();
@@ -113,6 +113,21 @@ const state = {
     cs.game.play.computerPlay = computerPlay;
     this.setState(cs);
     //Aca no necesito hacer el setState porque setJugada ya lo hace. Y ambas van de la mano
+  },
+  addPuntos(pointForWho: "pc" | "player") {
+    const cs = this.getState();
+    const gameStatus = cs.game.gamesStatus;
+    if (pointForWho == "player") {
+      gameStatus.victorys = gameStatus.victorys + 1;
+      console.log(cs, "RESULTADO DE LAS VICTORIAS CS");
+      this.setState(cs);
+    } else if (pointForWho == "pc") {
+      gameStatus.losses = gameStatus.losses + 1;
+      console.log(cs, "RESULTADO DE LAS DERROTAS CS");
+      this.setState(cs);
+    } else {
+      alert("error");
+    }
   },
   renderGanador() {
     // for (const cb of this.listener) {
@@ -161,14 +176,18 @@ const state = {
     const derrota = [derrotaConPiedra, derrotaConPapel, derrotaConTijera]
       .toString()
       .includes("true");
-    console.log(empate, "DEROOTA DSA");
+
     //Si no selecciono nada la jugada de la computadora va a ser = a undefined ("")
     const computerActualPlay = state.getState().game.computerPlay;
     if (victoria.toString() == "true") {
+      //ACA SE AGREGAN PUNTOS AL JUGADOR
+      this.addPuntos("player");
       root.innerHTML = `<game-results>Ganaste</game-results>`;
     } else if (empate.toString() == "true") {
       root.innerHTML = `<game-results>Empate</game-results>`;
     } else if (derrota.toString() == "true") {
+      //ACA SE AGREGAN PUNTOS A LA PC
+      this.addPuntos("pc");
       root.innerHTML = `<game-results>Perdiste</game-results>`;
     } else {
       root.innerHTML = `<game-results>ELEGI ALGO</game-results>`;

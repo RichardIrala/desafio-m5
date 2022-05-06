@@ -1,7 +1,7 @@
 import { state } from "../../state";
 
 const fondoDelJuego = require("url:../../components/imgs/fondo.svg");
-export function gamePage(params: any) {
+export function gamePage() {
   const root = document.querySelector(".root");
   const div = document.createElement("div");
   div.classList.add("principal-container");
@@ -47,7 +47,7 @@ export function gamePage(params: any) {
       setTimeout(() => {
         //Se remueve el contador
         div.removeChild(divDelSpan);
-        // console.log("DKHJSAKDHSKAHD");
+        // Este params le envia el goTo al renderGanador para que al clickear VOLVER A JUGAR le recargue la página
         state.renderGanador();
         state.consola();
       }, 500);

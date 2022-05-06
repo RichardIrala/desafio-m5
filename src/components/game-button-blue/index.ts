@@ -16,7 +16,7 @@ customElements.define(
         border: 10px solid;
         border-radius: 4px;
         border-color: rgba(0, 25, 151, 1);
-        width: 322px;
+        min-width: 322px;
         min-height: 87px;
         color: rgba(216, 252, 252, 1);
         font-size: 45px;
