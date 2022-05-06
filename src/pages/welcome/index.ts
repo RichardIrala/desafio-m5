@@ -1,10 +1,15 @@
-export function pageWelcome() {
+export function pageWelcome(params: any) {
   const root = document.querySelector(".root");
   root.innerHTML = ``;
   const divPadre = document.createElement("div");
-  divPadre.innerHTML = `
-    Hola
-    `;
+  const span = document.createElement("span");
+  span.innerHTML = `HOLA`;
+  span.addEventListener("click", () => {
+    console.log("a");
+    params("/game-homepage");
+  });
+
+  divPadre.appendChild(span);
   root.appendChild(divPadre);
 
   //listener que envia hacía el inicio del juego de piedra papel y tijeras

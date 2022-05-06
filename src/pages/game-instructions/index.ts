@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 const fondoDelJuego = require("url:../../components/imgs/fondo.svg");
 export function gameIntructionsPage(params: any) {
   const root = document.querySelector(".root");
@@ -33,7 +34,36 @@ export function gameIntructionsPage(params: any) {
   root.appendChild(div);
   root.appendChild(style);
   div.querySelector("game-button-blue").addEventListener("click", () => {
-    params("/play-game");
+    //Aquí estan los colores de los botones de las alertas, para cambiar directamente en la constante y que se apliquen
+    const colorConfirmar = "rgba(0, 144, 72, 1)";
+    const colorDenegar = "rgba(0, 108, 252, 1)";
+    Swal.fire({
+      title: "¿Quieres comenzar a jugar?",
+      confirmButtonText: "Si, quiero continuar",
+      confirmButtonColor: colorConfirmar,
+      showDenyButton: true,
+      denyButtonText: `No, aun no quiero jugar`,
+      denyButtonColor: colorDenegar,
+    }).then((result) => {
+      /* Etapa de confirmación, degenación o click en la pantalla sin responder */
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "¡A jugar!",
+          showConfirmButton: true,
+          confirmButtonText: "Buenisimo",
+          confirmButtonColor: colorConfirmar,
+        }).then((result) => {
+          if (result) {
+            //Luego de confirmar y sacar el cartel de "Buenisimo" o darle al boton, lleva directamente al juego
+            params("/play-game");
+          }
+        });
+      } else if (result.isDenied) {
+        Swal.fire("Cuando estes listo entonces...", "", "warning");
+      } else {
+        Swal.fire("Necesito que elijas una de las opciones", "", "error");
+      }
+    });
   });
 }
 //Instrucciones del Ppot
