@@ -8,27 +8,27 @@ export function gamePage() {
   const style = document.createElement("style");
   root.innerHTML = ``;
   div.innerHTML = `
-  <ppot-el></ppot-el>
+    <ppot-el></ppot-el>
   `;
   style.innerHTML = `
-  .play-game__contador-container {
-    display: flex; justify-content: center; align-items: center;
-    width: 243px; height: 243px;
-    font-size: 64px;
-    position: absolute; top: 50%; transform: translate(0 , -50%);
-    border-radius: 50%;
-    background: red;
-  }
-  .principal-container {
-    background: url(${fondoDelJuego});
-    background-size: cover;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 74px;
-    padding-top: 115px;
-  }
+    .play-game__contador-container {
+      display: flex; justify-content: center; align-items: center;
+      width: 243px; height: 243px;
+      font-size: 64px;
+      position: absolute; top: 50%; transform: translate(0 , -50%);
+      border-radius: 50%;
+      background: red;
+    }
+    .principal-container {
+      background: url(${fondoDelJuego});
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 74px;
+      padding-top: 115px;
+    }
   `;
 
   root.appendChild(div);
@@ -44,15 +44,19 @@ export function gamePage() {
     counter--;
     if (counter < 1) {
       clearInterval(intervalId);
+
       setTimeout(() => {
-        //Se remueve el contador
+        //Se remueve el contador 3-2-1
         div.removeChild(divDelSpan);
+        //Se renderiza la animación de las elecciones de cada jugador
         state.renderAnimationCombat();
-        state.consola();
+        /* state.consola(); */
       }, 500);
+
       setTimeout(() => {
+        //Se renderiza la tabla que menciona quien gano, y muestra los puntos actuales de Victorias vs Derrotas
         state.renderGanador();
-        state.consola();
+        /* state.consola(); */
       }, 4000);
     }
   }, 1000);
