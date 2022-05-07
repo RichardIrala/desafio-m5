@@ -154,24 +154,46 @@ export function pageWelcome(params: any) {
     .main-columns__titulo {
       background: rgba(0, 144, 72, 1);
       border: solid black;
-      font-size: 26px;
+      font-size: 20px;
       padding: 10px;
-      width: 440px;
+      width: 300px;
       text-align: center;
     }
+    
+    @media (min-width: 480px) {
+      .main-columns__titulo {
+        width: 440px;
+      }
+    }
+
     .main-column {
       display: grid;
       grid-template:
         "number titulo" 50px
-        "number imagen" 400px /
-        40px 400px
+        "number imagen" 300px /
+        40px 260px
+    }
+    @media (min-width: 480px) {
+      .main-column {
+        grid-template:
+          "number titulo" 50px
+          "number imagen" 400px /
+          40px 400px
+      }
     }
     .color-white {
       color: white;
     }
     .main-column__imagen {
-      width: 300px;
+      width: 200px;
     }
+
+    @media (min-width: 480px) {
+      .main-column__imagen {
+        width: 300px;
+      }
+    }
+    
               .main-column__number { grid-area: number; display: flex; justify-content: center; align-items: center; background: rgba(0, 144, 72, 1);  border: solid black;}
               .main-column__titulo { grid-area: titulo; display: flex; justify-content: center; align-items: center; background: rgba(0, 108, 252, 1); border: solid black;}
     .main-column__imagen-container { grid-area: imagen; display: flex; justify-content: center; align-items: center; background: rgba(0, 108, 252, 1); border: solid black; flex-direction: column; padding: 20px; gap: 20px;}
