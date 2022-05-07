@@ -9,6 +9,7 @@ export function pageInicioGame(params: any) {
   <game-title></game-title>
   <game-button-blue>Empezar</game-button-blue>
   <ppot-el></ppot-el>
+  <homepage-icon></homepage-icon>
   `;
   style.innerHTML = `
   .principal-container {
