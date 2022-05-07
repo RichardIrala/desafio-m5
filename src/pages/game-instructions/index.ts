@@ -11,6 +11,7 @@ export function gameIntructionsPage(params: any) {
   <p class="instructions">Presioná jugar y elegí: piedra, papel o tijera antes de que pasen los 3 segundos.</p>
   <game-button-blue>¡Jugar!</game-button-blue>
   <ppot-el></ppot-el>
+  <homepage-icon></homepage-icon>
   `;
   style.innerHTML = `
   .principal-container {

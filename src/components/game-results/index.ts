@@ -1,6 +1,6 @@
 import { gamePage } from "../../pages/play-game";
 import { state } from "../../state";
-
+//SOLO SE PUEDE USAR 1 vez por página
 customElements.define(
   "game-results",
   class extends HTMLElement {
@@ -81,9 +81,6 @@ customElements.define(
       this.eventosAgregados();
     }
     render() {
-      function hola() {
-        console.log("hola");
-      }
       const cs = state.getState();
       const victorias = cs.game.gamesStatus.victorys;
       const derrotas = cs.game.gamesStatus.losses;
@@ -101,11 +98,12 @@ customElements.define(
       <div class="game-results__volver-a-jugar">
         <game-button-blue class="button-volver-a-jugar">Volver a Jugar</game-button-blue>
       </div>
+      <homepage-icon></homepage-icon>
       `;
       this.shadow.appendChild(div);
     }
     eventosAgregados() {
-      const soy = this.shadow
+      this.shadow
         .querySelector(".game-results__volver-a-jugar")
         .addEventListener("click", () => {
           const BASE_PATH = "/desafio-m5";
@@ -119,6 +117,16 @@ customElements.define(
           history.pushState({}, "", completePath);
           gamePage();
         });
+      //ESTO COMENTADO ES UNA MANERA DE EDITAR EL SHADOW DE OTRO COMPONENTE
+      // const resultadoDeljuego = this.shadow.querySelector("game-button-blue");
+      // const shadowDelResultado = resultadoDeljuego["shadow"];
+      // const estilosNuevos = document.createElement("style");
+      // estilosNuevos.innerHTML = `
+      //   button {
+      //     background: red;
+      //   }
+      // `;
+      // shadowDelResultado.appendChild(estilosNuevos);
     }
   }
 );
