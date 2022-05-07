@@ -18,6 +18,7 @@ const state = {
     },
   },
   listeners: [],
+
   consola() {
     console.log(state.data.game.play);
   },
@@ -43,6 +44,7 @@ const state = {
     }
   },
   subscribe(callback: (any) => any) {
+    console.log("hecho");
     this.listeners.push(callback);
   },
 
