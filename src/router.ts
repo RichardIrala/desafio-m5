@@ -1,5 +1,6 @@
 import { gameIntructionsPage } from "./pages/game-instructions";
 import { pageInicioGame } from "./pages/inicioGame";
+import { notesPage } from "./pages/notes";
 import { gamePage } from "./pages/play-game";
 import { pageWelcome } from "./pages/welcome";
 
@@ -36,6 +37,10 @@ export function initRouter(container: Element) {
       {
         path: /\/play-game/,
         component: gamePage,
+      },
+      {
+        path: /\/notes/,
+        component: notesPage,
       },
     ];
     console.log("El handleRoute recibió una nueva ruta", route);

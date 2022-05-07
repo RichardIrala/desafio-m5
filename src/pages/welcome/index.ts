@@ -1,6 +1,28 @@
 const computadoraIcon = require("url:../../components/imgs/computadora-icon.svg");
 const submitIcon = require("url:../../components/imgs/submit-icon.svg");
-
+//infoColumns es el objeto que permite editar el cuadro con columnas en está página. Se utiliza para no requerir usar código cuando quiera hacer cambios.
+const infoColumns = [
+  {
+    title: "Un juego de piedra papel o tijera",
+    image: computadoraIcon,
+    description:
+      "Este juego consta de jugar 1v1 contra la computadora al típico juego de piedra papel y tijeras",
+    number: 1,
+  },
+  {
+    title: "Notas",
+    image: computadoraIcon,
+    description: "Utiliza esta sección para anotar tus tareas pendientes",
+    number: 2,
+  },
+  {
+    title: "Contactame",
+    image: computadoraIcon,
+    description:
+      "Has click en el título para acceder al formulario de contacto",
+    number: 3,
+  },
+];
 export function pageWelcome(params: any) {
   const root = document.querySelector(".root");
   root.innerHTML = ``;
@@ -22,9 +44,9 @@ export function pageWelcome(params: any) {
     <form class="header__form">
       <div class="header__form__inputs">
         <select class="header__form__inputs--select" name="headerForm">
-          <option value="contactarme">Contactarme</option>
           <option value="jugar" selected>Jugar Piedra papel o Tijeras</option>
           <option value="anotador">Anotar tareas pendientes</option>
+          <option value="contactarme">Contactarme</option>
         </select>
         <input class="submit-icon" type="image" src=${submitIcon}>
       </div>
@@ -37,24 +59,32 @@ export function pageWelcome(params: any) {
   <div class="main-container">
     <div class="main-columns">
       <h2 class="main-columns__titulo color-white">Esta página tiene distintas funcionalidades</h2>
-      <div class="main-column">
+      ${infoColumns
+        .map((element) => {
+          console.log("Iteracion ");
+          return `
+          <div class="main-column">
+
           <div class="main-column__number color-white">
-            <span>1</span>
+            <span>${element.number}</span>
           </div>
           <div class="main-column__titulo color-white">
-            <h3>Un juego de piedra papel o tijera</h3>
+            <h3>${element.title}</h3>
           </div>
           <div class="main-column__imagen-container color-white">
-            <img class="main-column__imagen" src=${computadoraIcon} alt="">
-            <span>Este juego consta de jugar 1v1 contra la computadora al típico juego de piedra papel y tijeras<span>
+            <img class="main-column__imagen" src=${element.image} alt="">
+            <span>${element.description}<span>
           </div>
         
-      </div>
+         </div>
+          `;
+        })
+        .join("")}
+      
       
     </div>
   </div>
   `;
-  //AUTOMATIZAR EL CUADRO, USAR UN OBJETO PARA GESTIONARLO
   // divPadre.appendChild(buttonEl);
   divPadre.appendChild(divTEMPORAL);
   root.appendChild(divPadre);
@@ -160,9 +190,10 @@ export function pageWelcome(params: any) {
     } else if (valorDelForm == "jugar") {
       params("/game-homepage");
     } else if (valorDelForm == "anotador") {
-      console.log("ANOTADOR? DE UNA BRO que campeon es ese?");
+      params("/notes");
     }
   });
+  //AGREGAR UN EVENT LISTENER PARA ACCEDER AL PIEDRA PAPEL O TIJERAS, NOTAS, o CONTACTO
 }
 //Bienvenida, con mi presentación (? el desafio no lo pide pero estaría bueno)
 //revisar el paint
