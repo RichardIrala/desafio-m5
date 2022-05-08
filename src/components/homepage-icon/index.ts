@@ -41,7 +41,7 @@ customElements.define(
           border-radius: 50%;
           padding: 10px;
         }
-        `;
+      `;
       this.shadow.appendChild(style);
       this.addEventsOnClickComponent();
     }

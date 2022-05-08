@@ -13,21 +13,21 @@ class Header extends HTMLElement {
     nuevoEl.innerHTML = `<h2 class="header--title">${HTMLContent}</h2>`;
     const style = document.createElement("style");
     style.textContent = `
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-          width: 100%;
-          padding: 17px 0px;
-          display: flex;
-          justify-content: center;
-          background: rgba(0, 144, 72, 1);
-        }
-        .header--title {
-          font-size: 22px;
-        }
-        `;
+      * {
+          margin: 0;
+          padding: 0;
+      }
+      .header {
+        width: 100%;
+        padding: 17px 0px;
+        display: flex;
+        justify-content: center;
+        background: rgba(0, 144, 72, 1);
+      }
+      .header--title {
+        font-size: 22px;
+      }
+      `;
     this.shadow.appendChild(nuevoEl);
     this.shadow.appendChild(style);
   }

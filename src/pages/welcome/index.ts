@@ -21,8 +21,7 @@ const infoColumns = [
   {
     title: "Contactame",
     image: formIcon,
-    description:
-      "Has click en el título para acceder al formulario de contacto",
+    description: "Por el momento esta página no esta disponible...",
     number: 3,
   },
 ];
