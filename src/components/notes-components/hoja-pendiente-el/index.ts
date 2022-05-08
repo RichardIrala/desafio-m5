@@ -67,15 +67,16 @@ class addHojaPendiente extends HTMLElement {
   render() {
     // console.log(state.getState().list, "leame ahora mismo holiis");
     const cs = state.getState();
+    const data = cs.notes;
 
-    // console.log(list, "hi bebe soy io");
     var style = document.createElement("style");
     style.textContent = `
-    @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
         * {
           margin: 0;
           box-sizing: border-box;
         }
+
         .div-principal {
             padding: 20px;
             min-height: 80vh;
@@ -83,6 +84,7 @@ class addHojaPendiente extends HTMLElement {
             display: grid;
             justify-content: center;
         }
+
         .all-content-container {
           display: grid;
           gap: 10px;
@@ -100,6 +102,7 @@ class addHojaPendiente extends HTMLElement {
             grid-template-columns: 1fr 1fr 1fr;
           }
         }
+
         .nota {
           padding: 10px;
           background: rgba(0, 144, 72, 1);
@@ -113,6 +116,7 @@ class addHojaPendiente extends HTMLElement {
             padding: 20px;
           }
         }
+
         .listas {
           list-style-type: none;
           color:white;
@@ -125,17 +129,21 @@ class addHojaPendiente extends HTMLElement {
             font-size: 26px
           }
         }
+
         .tachado {text-decoration:line-through}
+
         .input-and-remove {
           display: flex;
           flex-direction: column;
           gap: 30px;
           align-items: center;
         }
+
         .input {
           width: 35px;
           height: 35px;
         }
+
         .remove-icon {
           width: 40px
         }
@@ -144,9 +152,8 @@ class addHojaPendiente extends HTMLElement {
         }
         `;
     this.shadow.appendChild(style);
-    const data = cs.notes;
+
     const div = document.createElement("div");
-    const urlImagen = "../../imgs/borrar.png";
     div.classList.add("div-principal");
     div.innerHTML = `
       <div class="all-content-container">
@@ -172,10 +179,8 @@ class addHojaPendiente extends HTMLElement {
         })
         .join("")}
       </div>
-      `;
-
+    `;
     this.shadow.appendChild(div);
   }
 }
 customElements.define("hoja-pendiente-el", addHojaPendiente);
-// console.log(state.getState().list, "leame ahora mismo xd");
